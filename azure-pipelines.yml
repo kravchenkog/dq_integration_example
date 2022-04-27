@@ -1,0 +1,41 @@
+pr: none
+trigger: none
+
+variables:
+  pythonVersion: '3.9'
+  agentVmImage: 'Ubuntu-18.04'
+
+stages:
+  - stage: DATA_QUALITY
+
+    jobs:
+      - job: data_quality
+        pool:
+          vmImage: $(agentVmImage)
+
+        steps:
+          - checkout: self
+            displayName: Getting project
+
+          - task: UsePythonVersion@0
+            displayName: Use Python $(pythonVersion)
+            inputs:
+              versionSpec: $(pythonVersion)
+
+          - script: |
+              python -m pip install --upgrade pip
+              pip install -r requirements.txt
+            displayName: Update pip and install dependencies
+
+          - script: python main_spark.py
+            displayName: Run spark pipeline
+
+          - script: pytest test_example.py --junitxml=test_report.xml
+            displayName: Run tests
+
+          - task: PublishTestResults@2
+            displayName: Publish test results
+            condition: succeededOrFailed()
+            inputs:
+              testResultsFormat: JUnit
+              testResultsFiles: '$(Build.SourcesDirectory)/test_report.xml'
