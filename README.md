@@ -245,7 +245,7 @@ flowchart TB
     style M fill:#0b5394,stroke:#333,stroke-width:5px
     style I fill:#0b5394,stroke:#333,stroke-width:5px
     style F fill:#0b5394,stroke:#333,stroke-width:5px
-    style H fill:#e06666,stroke:#333,stroke-width:5px
+    style H fill:#990000,stroke:#333,stroke-width:5px
     
     subgraph steps
     A[(Input: </br>sales_input_data </br>DB)] -->|Get input data| B(Go shopping)   
