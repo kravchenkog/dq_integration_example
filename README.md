@@ -1,5 +1,5 @@
 
-This project was created as an example to show one more way to use great expectation library and integration for the Data quality checks into the pipeline. 
+This project was created as an example to show one more way to use [great expectation](https://docs.greatexpectations.io/docs/) library and integration for the Data quality checks into the pipeline. 
 The main idea is to create a universal way to integrate Data Quality control into pipeline projects based on the most of Data Pipeline frameworks. 
 This approach can be applied for Data Pipeline project which use spark and  pandas data frames.
 
@@ -22,20 +22,25 @@ This approach can be applied for Data Pipeline project which use spark and  pand
 - I doubt that it is possible to add custom expectations for the `great_expectations` library with this approach (but we can use your own expectations using any libraries and tools)
 
 ## The main idea for a complete pipeline cycle including test run:
+###### This scheme is related to current Project only, the Data Quality checks can be integrated in defferent places inside the Data Pipeline
 
 ```mermaid
     flowchart LR
     style C fill:#0b5394,stroke:#333,stroke-width:5px
     style G fill:#0b5394,stroke:#333,stroke-width:5px
+    style X fill:#0b5394,stroke:#333,stroke-width:5px
     
     subgraph Data Pipeline
     A[Pipeline</br> Start] --> B[Pipeline</br> Transformations]
     B --> C([Data Qality checks </br> save DQ report])
     C --> D[(Pipeline </br>OUTPUTS)] --> E[Pipeline</br> Stop]
     end
+    subgraph Data quality DB
+    C -...-> X[(DQ </br>report)]
+    end
     subgraph Tests
     F(Tests start) --> G([Check DQ report]) --> H(Generate Test Report)
-    C o-.-o G
+    X -..-o G
     end
 
 ```
@@ -243,6 +248,7 @@ def run_all(self):
 
 
 ## Data quality and Data pipeline main logic scheme:
+###### This scheme is related to current Project only, the Data Quality checks can be integrated in defferent places inside the Data Pipeline
 ```mermaid
 flowchart LR
 
