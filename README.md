@@ -27,11 +27,16 @@ This approach can be applied for Data Pipeline project which use spark and  pand
     flowchart LR
     style C fill:#0b5394,stroke:#333,stroke-width:5px
     style G fill:#0b5394,stroke:#333,stroke-width:5px
-    A[(Pipeline </br>INPUTS)] --> B[Pipeline</br> Start]
+    
+    subgraph Data Pipeline
+    A[Pipeline</br> Start] --> B[Pipeline</br> Transformations]
     B --> C[Data Qality checks </br> save DQ report]
     C --> D[(Pipeline </br>OUTPUTS)] --> E[Pipeline</br> Stop]
+    end
+    subgraph Tests
     F(Tests start) --> G(Check DQ report) --> H(Generate Test Report)
-    C-.->G
+    C o-.-o G
+    end
 
 ```
 As shown in the diagram above, the Data Quality checks are integrated inside the Data Pipeline, 
@@ -105,8 +110,7 @@ allure serve allurereport
 └── requirements.txt
 ```
 `main_spark.py`and `main_pandas.py`
-This files include example of the Data Pipeline and Entry Point of the project. This is a very simple example of a Data Pipeline based on Spark and Pandas separately, but it should be enough to show the integration of Data Quality
-Both examples ofpipelines include:
+This files include example of the Data Pipeline and Entry Point of the project. This is a very simple example of a Data Pipeline based on Spark and Pandas separately, but it should be enough to show the integration of Data Quality. </br> Both examples of pipelines include:
 - One inputs DB data (`sales_input_data`)
 - 4 Pipeline steps
 - Two outputs DB data (`sales_output_female` and `sales_output_male`)
