@@ -240,28 +240,29 @@ def run_all(self):
 
 ## Data quality and Data pipeline main logic scheme:
 ```mermaid
-flowchart TD
-    style A fill:#38761d,stroke:#333,stroke-width:5px
-    style J fill:#38761d,stroke:#333,stroke-width:5px
-    style G fill:#38761d,stroke:#333,stroke-width:5px
+flowchart TB
+
     style M fill:#0b5394,stroke:#333,stroke-width:5px
+    style I fill:#0b5394,stroke:#333,stroke-width:5px
+    style F fill:#0b5394,stroke:#333,stroke-width:5px
     style H fill:#e06666,stroke:#333,stroke-width:5px
     
-    A[(Input: </br>sales_input_data </br>DB)] ==>|Get input data| B(Go shopping)
+    subgraph steps
+    A[(Input: </br>sales_input_data </br>DB)] -->|Get input data| B(Go shopping)   
     B([Pipeline Step 1]) --> C([Pipeline Step 2])
     C --> D([Pipeline Step 3])
     D --> E([Pipeline Step 4])
-    E --> F{Data Quality </br> for sales_output_male </br> DataFrame}
+    end
+    E --> F{DataQuality </br> for </br> Ouput 1}
     F-.-> M[(SAVE Output: </br> dq_report </br> DB)]
-    F ==> |if DQ PASS| G[(Output 1: </br> sales_output_male </br>DB)]
-    F --> |if DQ ERROR| H[Raise Error and </br>stop Pipeline]
-    F ==> |if DQ WARNING| G
+    F ==> |if DQ PASS| G[(Output 1: </br> sales_output_male </br>DB)]    
+    F ==> |if DQ WARNING| G 
     
-    
-    G --> I{Data Quality </br> for sales_output_female </br> DataFrame}
+    G --> I{DataQuality </br> for </br> Ouput 2}
     I ==> |if DQ PASS| J[(Output 2: </br> sales_output_female </br>DB)]
-    I --> |if DQ ERROR| H
     I ==> |if DQ WARNING| J
     I -.-> M
+    F --> |if DQ ERROR| H[Raise Error and </br>stop Pipeline]
+    I --> |if DQ ERROR| H
 ```
 
