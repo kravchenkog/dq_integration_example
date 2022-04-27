@@ -1,0 +1,45 @@
+success,expectation_type,kwargs,description,ts
+True,expect_column_to_exist,"{'column': 'Payment', 'result_format': 'SUMMARY'}",Expect Payment in list of columns of Sales df,2022-03-20 16:02:48.693436
+True,expect_column_to_exist,"{'column': 'Unit price', 'result_format': 'SUMMARY'}",Expect Unit price in list of columns of Sales df,2022-03-20 16:02:48.843611
+True,expect_column_distinct_values_to_be_in_set,"{'column': 'Gender', 'value_set': ['Male', 'Female'], 'result_format': 'BASIC'}","Expect Gender Distinct values to be in set: ['Male', 'Female']",2022-03-20 16:02:51.110627
+True,expect_column_to_exist,"{'column': 'Payment', 'result_format': 'SUMMARY'}",Expect Payment in list of columns of Sales df,2022-04-18 16:24:29.540865
+True,expect_column_to_exist,"{'column': 'Unit price', 'result_format': 'SUMMARY'}",Expect Unit price in list of columns of Sales df,2022-04-18 16:24:29.679758
+True,expect_column_distinct_values_to_be_in_set,"{'column': 'Gender', 'value_set': ['Male', 'Female'], 'result_format': 'BASIC'}","Expect Gender Distinct values to be in set: ['Male', 'Female']",2022-04-18 16:24:31.835542
+True,expect_column_to_exist,"{'column': 'Payment', 'result_format': 'SUMMARY'}",Expect Payment in list of columns of Sales df,2022-04-18 16:28:18.474509
+True,expect_column_to_exist,"{'column': 'Unit price', 'result_format': 'SUMMARY'}",Expect Unit price in list of columns of Sales df,2022-04-18 16:28:18.616309
+True,expect_column_to_exist,"{'column': 'Payment', 'result_format': 'SUMMARY'}",Expect Payment in list of columns of Sales df,2022-04-18 16:29:00.226737
+True,expect_column_to_exist,"{'column': 'Unit price', 'result_format': 'SUMMARY'}",Expect Unit price in list of columns of Sales df,2022-04-18 16:29:00.369474
+True,expect_column_distinct_values_to_be_in_set,"{'column': 'Gender', 'value_set': ['Male', 'Female'], 'result_format': 'BASIC'}","Expect Gender Distinct values to be in set: ['Male', 'Female']",2022-04-18 16:29:02.494983
+True,expect_column_to_exist,"{'column': 'Payment', 'result_format': 'SUMMARY'}",Expect Payment in list of columns of Sales df,2022-04-18 16:29:26.682670
+True,expect_column_to_exist,"{'column': 'Unit price', 'result_format': 'SUMMARY'}",Expect Unit price in list of columns of Sales df,2022-04-18 16:29:26.867301
+True,expect_column_distinct_values_to_be_in_set,"{'column': 'Gender', 'value_set': ['Male', 'Female'], 'result_format': 'BASIC'}","Expect Gender Distinct values to be in set: ['Male', 'Female']",2022-04-18 16:29:29.027853
+True,expect_column_to_exist,"{'column': 'Payment', 'result_format': 'SUMMARY'}",Expect Payment in list of columns of Sales df,2022-04-18 17:47:04.222511
+True,expect_column_to_exist,"{'column': 'Unit price', 'result_format': 'SUMMARY'}",Expect Unit price in list of columns of Sales df,2022-04-18 17:47:14.379360
+True,expect_column_distinct_values_to_be_in_set,"{'column': 'Gender', 'value_set': ['Male', 'Female'], 'result_format': 'BASIC'}","Expect Gender Distinct values to be in set: ['Male', 'Female']",2022-04-18 17:47:17.819936
+True,expect_column_to_exist,"{'column': 'Payment', 'result_format': 'SUMMARY'}",Expect Payment in list of columns of Sales df,2022-04-18 17:56:18.091207
+True,expect_column_to_exist,"{'column': 'Unit price', 'result_format': 'SUMMARY'}",Expect Unit price in list of columns of Sales df,2022-04-18 17:56:18.214595
+True,expect_column_distinct_values_to_be_in_set,"{'column': 'Gender', 'value_set': ['Male', 'Female'], 'result_format': 'BASIC'}","Expect Gender Distinct values to be in set: ['Male', 'Female']",2022-04-18 17:56:18.219227
+True,expect_column_distinct_values_to_be_in_set,"{'column': 'Gender', 'value_set': ['Male', 'Female'], 'result_format': 'BASIC'}","Expect Gender Distinct values to be in set: ['Male', 'Female']",2022-04-18 17:56:29.748323
+True,expect_column_distinct_values_to_be_in_set,"{'column': 'Gender', 'value_set': ['Male', 'Female'], 'result_format': 'BASIC'}","Expect Gender Distinct values to be in set: ['Male', 'Female']",2022-04-18 18:00:22.059876
+True,expect_column_distinct_values_to_be_in_set,"{'column': 'Gender', 'value_set': ['Male', 'Female'], 'result_format': 'BASIC'}","Expect Gender Distinct values to be in set: ['Male', 'Female']",2022-04-18 18:00:56.538371
+True,expect_column_distinct_values_to_be_in_set,"{'column': 'Gender', 'value_set': ['Male', 'Female'], 'result_format': 'BASIC'}","Expect Gender Distinct values to be in set: ['Male', 'Female']",2022-04-18 18:01:20.336653
+False,expect_column_to_exist,"{'column': 'Payment', 'result_format': 'SUMMARY'}",Expect Payment in list of columns of Sales df,2022-04-19 10:36:36.792767
+False,expect_column_to_exist,"{'column': 'Payment', 'result_format': 'SUMMARY'}",Expect Payment in list of columns of Sales df,2022-04-19 10:37:17.839242
+False,expect_column_to_exist,"{""column"": ""Payment"", ""result_format"": ""SUMMARY""}",Expect Payment in list of columns of Sales df,2022-04-19 10:39:29.828702
+False,expect_column_to_exist,"{""column"": ""Payment"", ""result_format"": ""SUMMARY""}",Expect Payment in list of columns of Sales df,2022-04-19 10:40:01.046473
+False,expect_column_to_exist,"{""column"": ""Payment"", ""result_format"": ""SUMMARY""}",Expect Payment in list of columns of Sales df,2022-04-19 10:41:19.528461
+False,expect_column_to_exist,"{""column"": ""Unit price"", ""result_format"": ""SUMMARY""}",Expect Unit price in list of columns of Sales df,2022-04-19 10:41:41.657954
+True,expect_column_to_exist,"{""column"": ""payment"", ""result_format"": ""SUMMARY""}",Expect payment in list of columns of Sales df,2022-04-19 10:50:00.862264
+True,expect_column_to_exist,"{""column"": ""payment"", ""result_format"": ""SUMMARY""}",Expect payment in list of columns of Sales df,2022-04-19 10:51:39.037277
+True,expect_column_to_exist,"{""column"": ""payment"", ""result_format"": ""SUMMARY""}",Expect payment in list of columns of Sales df,2022-04-19 10:54:35.937268
+True,expect_column_to_exist,"{""column"": ""payment"", ""result_format"": ""SUMMARY""}",Expect payment in list of columns of Sales df,2022-04-19 13:38:32.987116
+True,expect_column_to_exist,"{""column"": ""unit_price"", ""result_format"": ""SUMMARY""}",Expect unit_price in list of columns of Sales df,2022-04-19 13:38:33.135854
+True,expect_column_distinct_values_to_be_in_set,"{""column"": ""gender"", ""value_set"": [""Male"", ""Female""], ""result_format"": ""BASIC""}","Expect gender Distinct values to be in set: ['Male', 'Female']",2022-04-19 13:38:33.143566
+True,expect_column_to_exist,"{""column"": ""payment"", ""result_format"": ""SUMMARY""}",Expect payment in list of columns of Sales df,2022-04-19 15:08:36.620230
+True,expect_column_to_exist,"{""column"": ""payment"", ""result_format"": ""SUMMARY""}",Expect payment in list of columns of Sales df,2022-04-19 15:11:48.805417
+True,expect_column_to_exist,"{""column"": ""unit_price"", ""result_format"": ""SUMMARY""}",Expect unit_price in list of columns of Sales df,2022-04-19 15:12:28.529504
+True,expect_column_to_exist,"{""column"": ""payment"", ""result_format"": ""SUMMARY""}",Expect payment in list of columns of Sales df,2022-04-19 15:15:33.251337
+True,expect_column_to_exist,"{""column"": ""unit_price"", ""result_format"": ""SUMMARY""}",Expect unit_price in list of columns of Sales df,2022-04-19 15:15:53.800599
+True,expect_column_to_exist,"{""column"": ""payment"", ""result_format"": ""SUMMARY""}",Expect payment in list of columns of Sales df,2022-04-19 15:19:07.726584
+True,expect_column_to_exist,"{""column"": ""payment"", ""result_format"": ""SUMMARY""}",Expect payment in list of columns of Sales df,2022-04-19 15:22:26.529971
+True,expect_column_to_exist,"{""column"": ""payment"", ""result_format"": ""SUMMARY""}",Expect payment in list of columns of Sales df,2022-04-19 15:24:00.273544
