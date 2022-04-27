@@ -25,8 +25,8 @@ This approach can be applied for Data Pipeline project which use spark and  pand
 
 ```mermaid
     flowchart LR
-    style C fill:#38761d,stroke:#333,stroke-width:5px
-    style G fill:#38761d,stroke:#333,stroke-width:5px
+    style C fill:#0b5394,stroke:#333,stroke-width:5px
+    style G fill:#0b5394,stroke:#333,stroke-width:5px
     A[(Pipeline </br>INPUTS)] --> B[Pipeline</br> Start]
     B --> C[Data Qality checks </br> save DQ report]
     C --> D[(Pipeline </br>OUTPUTS)] --> E[Pipeline</br> Stop]
@@ -240,19 +240,19 @@ def run_all(self):
 
 ## Data quality and Data pipeline main logic scheme:
 ```mermaid
-flowchart TB
+flowchart LR
 
     style M fill:#0b5394,stroke:#333,stroke-width:5px
     style I fill:#0b5394,stroke:#333,stroke-width:5px
     style F fill:#0b5394,stroke:#333,stroke-width:5px
     style H fill:#990000,stroke:#333,stroke-width:5px
     
-    subgraph steps
+    subgraph Pipeline Transformations
     A[(Input: </br>sales_input_data </br>DB)] -->|Get input data| B(Go shopping)   
-    B([Pipeline Step 1]) --> C([Pipeline Step 2])
-    C --> D([Pipeline Step 3])
-    D --> E([Pipeline Step 4])
-    end
+    B([Pipeline </br>Step 1]) --> C([Pipeline </br>Step 2])
+    C --> D([Pipeline </br>Step 3])
+    D --> E([Pipeline </br>Step 4])
+    end 
     E --> F{DataQuality </br> for </br> Ouput 1}
     F-.-> M[(SAVE Output: </br> dq_report </br> DB)]
     F ==> |if DQ PASS| G[(Output 1: </br> sales_output_male </br>DB)]    
