@@ -50,7 +50,7 @@ Tests, in turn, run independently from the Data Pipeline and check the DQ report
 
 ## Installation
 1. Install Spark 
-2. Use `puthon 3.7+`
+2. Use `python 3.7+`
 3. Install the dependencies from the requiremets.txt
 ```sh
 pip install requirements.txt
