@@ -30,11 +30,11 @@ This approach can be applied for Data Pipeline project which use spark and  pand
     
     subgraph Data Pipeline
     A[Pipeline</br> Start] --> B[Pipeline</br> Transformations]
-    B --> C[Data Qality checks </br> save DQ report]
+    B --> C([Data Qality checks </br> save DQ report])
     C --> D[(Pipeline </br>OUTPUTS)] --> E[Pipeline</br> Stop]
     end
     subgraph Tests
-    F(Tests start) --> G(Check DQ report) --> H(Generate Test Report)
+    F(Tests start) --> G([Check DQ report]) --> H(Generate Test Report)
     C o-.-o G
     end
 
