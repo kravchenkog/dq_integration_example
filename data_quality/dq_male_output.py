@@ -1,5 +1,5 @@
 import pandas as pd
-from great_expectations.expectations.expectation import ExpectationValidationResult
+import inspect
 from data_quality.data_quality_core import DataQuality, DqException
 from types import SimpleNamespace
 
@@ -77,18 +77,23 @@ class SalesDqMaleOutput:
         :param exception: dq expectation
         :return: None
         """
+        # check Data Frame type
         if type(self.male_output_df) is pd.DataFrame:
+            # get unexpected rows
             df_result: pd.DataFrame = self.male_output_df.loc[
                 (self.male_output_df['city'] == city) & (self.male_output_df['unit_price'] < unit_price_threshold)]
 
+            # create DQ result (the sa,e format as ExpectationValidationResult from ge library
             dq_result = SimpleNamespace(
                 success=False if df_result.shape[0] else True,
                 expectation_config=SimpleNamespace(
-                    expectation_type="custom expectation for male_output_df",
+                    expectation_type=inspect.stack()[1][4][0],  # current function name
                     kwargs={'city': city,
                             'unit_price_threshold': unit_price_threshold}),
 
             )
+
+            # add result Data Quality report DB
             self.dq.add_result_to_report(
                 result=dq_result,
                 dq_exception=exception
