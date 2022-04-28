@@ -1,6 +1,7 @@
 import pandas as pd
 import inspect
 from data_quality.data_quality_core import DataQuality, DqException
+from pyspark.sql import DataFrame as SparkDataFrame
 from types import SimpleNamespace
 
 
@@ -18,9 +19,8 @@ class SalesDqMaleOutput:
             cursor=self.cursor,
             table_name=table_name
         )
-
-        self.run_all_core()
         self.run_all_custom()
+        self.run_all_core()
         self.dq.dq_finalize()
 
     def run_all_custom(self):
@@ -70,7 +70,7 @@ class SalesDqMaleOutput:
     def check_male_from_city_unit_price_more(self, city: str, unit_price_threshold: float, exception: DqException):
         """
         this function is created as custom dq check (expectation) example which related to current DataFrame only
-        works for Pandas DF only, for Spark will be added soon ...
+        works for Pandas and Spark Data Frame ...
 
         :param city: city name
         :param unit_price_threshold: unit price threshold
@@ -98,3 +98,28 @@ class SalesDqMaleOutput:
                 result=dq_result,
                 dq_exception=exception
             )
+
+        # check Data Frame type
+        elif type(self.male_output_df) is SparkDataFrame:
+            # get unexpected rows
+            df_result: SparkDataFrame = self.male_output_df.filter(
+                f'city="{city}" and unit_price < {unit_price_threshold}').count()
+
+            # create DQ result (the sa,e format as ExpectationValidationResult from ge library
+            dq_result = SimpleNamespace(
+                success=False if df_result else True,
+                expectation_config=SimpleNamespace(
+                    expectation_type=inspect.stack()[1][4][0],  # current function name
+                    kwargs={'city': city,
+                            'unit_price_threshold': unit_price_threshold}),
+
+            )
+            # add result Data Quality report DB
+            self.dq.add_result_to_report(
+                result=dq_result,
+                dq_exception=exception
+            )
+        else:
+            return
+
+

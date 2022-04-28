@@ -73,7 +73,6 @@ class SalesDataPipeline:
             )
 
 
-
 if __name__ == '__main__':
     """
     Pipeline steps:
