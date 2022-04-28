@@ -230,7 +230,7 @@ Added example of the custom expactation for Spark and Pandas Data Frame (for `dq
 
 Run all checks:
 ```python
-def run_all(self):
+def run_all_core(self):
     self.dq.expect_column_to_exist(
         "payment",
         exception=DqException(
@@ -244,7 +244,19 @@ def run_all(self):
             exception_message="Expect 'unit_price' column is in list of columns TC343654",
         )
     )
+
 ...
+
+
+def run_all_custom(self):
+    self.check_male_from_city_unit_price_not_more(
+        city="Mandalay",
+        unit_price_threshold=10,
+        exception=DqException(
+            exception_message="Expect that 'unit_price' more then 10 if buyer from 'Mandalay' city and is Male"
+        )
+    )
+
 ```
 
 
