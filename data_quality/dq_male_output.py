@@ -20,6 +20,7 @@ class SalesDqMaleOutput:
         )
 
         self.run_all_core()
+        self.run_all_custom()
         self.dq.dq_finalize()
 
     def run_all_custom(self):
