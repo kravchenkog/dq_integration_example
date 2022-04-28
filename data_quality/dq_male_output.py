@@ -79,47 +79,31 @@ class SalesDqMaleOutput:
         """
         # check Data Frame type
         if type(self.male_output_df) is pd.DataFrame:
-            # get unexpected rows
-            df_result: pd.DataFrame = self.male_output_df.loc[
-                (self.male_output_df['city'] == city) & (self.male_output_df['unit_price'] < unit_price_threshold)]
-
-            # create DQ result (the sa,e format as ExpectationValidationResult from ge library
-            dq_result = SimpleNamespace(
-                success=False if df_result.shape[0] else True,
-                expectation_config=SimpleNamespace(
-                    expectation_type=inspect.stack()[1][4][0],  # current function name
-                    kwargs={'city': city,
-                            'unit_price_threshold': unit_price_threshold}),
-
-            )
-
-            # add result Data Quality report DB
-            self.dq.add_result_to_report(
-                result=dq_result,
-                dq_exception=exception
-            )
+            # get count unexpected rows
+            count_of_unexpected: int = (self.male_output_df.loc[
+                (self.male_output_df['city'] == city) & (self.male_output_df['unit_price'] < unit_price_threshold)]) \
+                .shape[0]
 
         # check Data Frame type
         elif type(self.male_output_df) is SparkDataFrame:
-            # get unexpected rows
-            df_result: SparkDataFrame = self.male_output_df.filter(
-                f'city="{city}" and unit_price < {unit_price_threshold}').count()
+            # get count unexpected rows
+            count_of_unexpected: int = self.male_output_df.filter(
+                f'city="{city}" and unit_price < {unit_price_threshold}') \
+                .count()
 
-            # create DQ result (the sa,e format as ExpectationValidationResult from ge library
-            dq_result = SimpleNamespace(
-                success=False if df_result else True,
-                expectation_config=SimpleNamespace(
-                    expectation_type=inspect.stack()[1][4][0],  # current function name
-                    kwargs={'city': city,
-                            'unit_price_threshold': unit_price_threshold}),
-
-            )
-            # add result Data Quality report DB
-            self.dq.add_result_to_report(
-                result=dq_result,
-                dq_exception=exception
-            )
         else:
             return
+        # create DQ result (the same format as ExpectationValidationResult from ge library)
+        dq_result = SimpleNamespace(
+            success=False if count_of_unexpected else True,
+            expectation_config=SimpleNamespace(
+                expectation_type=inspect.stack()[1][4][0],  # current function name
+                kwargs={'city': city,
+                        'unit_price_threshold': unit_price_threshold}),
 
-
+        )
+        # add result Data Quality report DB
+        self.dq.add_result_to_report(
+            result=dq_result,
+            dq_exception=exception
+        )
