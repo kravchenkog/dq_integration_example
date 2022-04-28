@@ -24,7 +24,7 @@ class SalesDqMaleOutput:
         self.dq.dq_finalize()
 
     def run_all_custom(self):
-        self.check_male_from_city_unit_price_more(
+        self.check_male_from_city_unit_price_not_more(
             city="Mandalay",
             unit_price_threshold=10,
             exception=DqException(
@@ -67,7 +67,7 @@ class SalesDqMaleOutput:
             )
         )
 
-    def check_male_from_city_unit_price_more(self, city: str, unit_price_threshold: float, exception: DqException):
+    def check_male_from_city_unit_price_not_more(self, city: str, unit_price_threshold: float, exception: DqException):
         """
         this function is created as custom dq check (expectation) example which related to current DataFrame only
         works for Pandas and Spark Data Frame ...

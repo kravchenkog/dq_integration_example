@@ -223,9 +223,10 @@ def dq_finalize(self):
         raise Exception("'\033[91m'" + f"\n{errors_df.to_json(indent=3, orient='records', lines=True)}" + '\033[m')
 ```
 
-### `dq_female_output.py`/`dq_female_output.py`
+### `dq_female_output.py`/`dq_male_output.py`
 This modules is created to perform DQ Checks for a specific date frame and includes checks related to it only.
-
+Added example of the custom expactation for Spark and Pandas Data Frame (for `dq_male_output.py` only):
+- check_male_from_city_unit_price_not_more
 
 Run all checks:
 ```python
