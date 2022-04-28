@@ -1,5 +1,4 @@
 from great_expectations import dataset
-from great_expectations.expectations.expectation import ExpectationValidationResult
 import warnings
 from pyspark.sql import DataFrame as SparkDataFrame
 import pandas as pd
@@ -72,7 +71,7 @@ class DataQuality:
         )
         self.add_result_to_report(result, exception)
 
-    def add_result_to_report(self, result: ExpectationValidationResult, dq_exception: DqException):
+    def add_result_to_report(self, result, dq_exception: DqException):
         record: Dict = {
             "success": result.success,
             "expectation_type": result.expectation_config.expectation_type,
