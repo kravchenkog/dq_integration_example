@@ -7,6 +7,10 @@ import os
 
 class SalesDataPipeline:
     def __init__(self):
+        """
+        Example of the Data Pipeline based on the Pandas
+        (do not judge strictly - I am not a date engineer :) )
+        """
         self.path_to_db = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "sales_pipeline.db")
         self.output_csv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "sales_csv")
         self.output_json_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "sales_json")

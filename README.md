@@ -129,21 +129,21 @@ f __name__ == '__main__':
 #### Pipeline Steps:
 
 ```python
-    # pipeline step 1
-    male_df = sales.get_sales_separated_by_gender(gender="Male")
-    female_df = sales.get_sales_separated_by_gender(gender="Female")
+# pipeline step 1
+male_df = sales.get_sales_separated_by_gender(gender="Male")
+female_df = sales.get_sales_separated_by_gender(gender="Female")
 
-    # pipeline step 2
-    male_df = sales.get_sales_by_payment_method(df=male_df, payment_method="Credit card")
-    female_df = sales.get_sales_by_payment_method(df=female_df, payment_method="Credit card")
+# pipeline step 2
+male_df = sales.get_sales_by_payment_method(df=male_df, payment_method="Credit card")
+female_df = sales.get_sales_by_payment_method(df=female_df, payment_method="Credit card")
 
-    # pipeline step 3
-    male_df = sales.get_sales_price_lower_then(df=male_df, price_lower=50)
-    female_df = sales.get_sales_price_lower_then(df=female_df, price_lower=50)
+# pipeline step 3
+male_df = sales.get_sales_price_lower_then(df=male_df, price_lower=50)
+female_df = sales.get_sales_price_lower_then(df=female_df, price_lower=50)
 
-    # pipeline step 4
-    male_df = sales.get_sales_quantity_lower_then(df=male_df, quantity_lower=3)
-    female_df = sales.get_sales_quantity_lower_then(df=female_df, quantity_lower=3)
+# pipeline step 4
+male_df = sales.get_sales_quantity_lower_then(df=male_df, quantity_lower=3)
+female_df = sales.get_sales_quantity_lower_then(df=female_df, quantity_lower=3)
 ```
 #### Data Quality Checks for MALE and FEMALE Data frames:
 ```python

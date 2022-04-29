@@ -7,6 +7,10 @@ import sqlite3
 
 class SalesDataPipeline:
     def __init__(self):
+        """
+        Example of the Data Pipeline based on the Pandas
+        (do not judge strictly - I am not a date engineer :) )
+        """
         self.path_to_db = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "sales_pipeline.db")
         self.connector = sqlite3.connect(self.path_to_db)
         self.cursor = self.connector.cursor()

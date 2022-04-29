@@ -1,11 +1,16 @@
 from data_quality.data_quality_core import DataQuality, DqException
-import os
-import sqlite3
 
 
 class SalesDqFemaleOutput:
 
     def __init__(self, female_output_df, connector=None, cursor=None, table_name=None):
+        """
+        This class and all expectations inside are related to male_output_df Data Frame only
+        :param female_output_df: the data frame for which expectations should be applied
+        :param connector: connector to DB
+        :param cursor: cursor for DB
+        :param table_name: the name of the table for the DQ report
+        """
         self.female_output_df = female_output_df
         self.connector = connector
         self.cursor = cursor
@@ -17,10 +22,13 @@ class SalesDqFemaleOutput:
             table_name=table_name
         )
 
-        self.run_all()
+        # run all custom expectations
+        self.run_all_core()
+
+        # finalize pipeline (raise exception or warnings if exists)
         self.dq.dq_finalize()
 
-    def run_all(self):
+    def run_all_core(self):
         self.dq.expect_column_to_exist(
             "payment",
             exception=DqException(
