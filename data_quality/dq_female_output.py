@@ -14,7 +14,6 @@ class SalesDqFemaleOutput:
         self.female_output_df = female_output_df
         self.connector = connector
         self.cursor = cursor
-        self.dq_exception = DqException
         self.dq = DataQuality(
             df=female_output_df,
             connector=connector,
