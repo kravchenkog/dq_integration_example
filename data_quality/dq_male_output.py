@@ -57,7 +57,7 @@ class SalesDqMaleOutput:
             "payment",
             exception=DqException(
                 exception_message="Expect 'payment' column is in list of columns TC345654",
-                is_error=False
+                is_error=True
             )
         )
         self.dq.expect_column_to_exist(
@@ -76,13 +76,13 @@ class SalesDqMaleOutput:
             column="gender", values_li=["Male"],
             exception=DqException(
                 exception_message="Expect only 'Male' values is in values only in the gender Column TC343654 ",
-                is_error=False
+                is_error=True
             )
         )
         self.dq.expect_column_to_exist(
-            column_name="blabla male",
+            column_name="product_liner",
             exception=DqException(
-                exception_message="Expect 'blabla' column is in list of columns TC345654",
+                exception_message="Expect 'product_line' column is in list of columns TC345654",
                 is_error=False
             )
         )

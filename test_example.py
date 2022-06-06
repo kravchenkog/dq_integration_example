@@ -12,7 +12,7 @@ class TestSalesPipelineDataQuality:
         with allure.step("WARNING results"):
             allure.attach(dq_result_warning.to_csv(),
                           attachment_type=allure.attachment_type.CSV,
-                          name=f"error")
+                          name=f"warning")
 
         assert dq_result_warning.success
 
@@ -21,7 +21,7 @@ class TestSalesPipelineDataQuality:
         with allure.step("ERROR results"):
             allure.attach(dq_result_error.to_csv(),
                           attachment_type=allure.attachment_type.CSV,
-                          name=f"warning")
+                          name=f"error")
 
         assert dq_result_error.success
 
@@ -35,6 +35,7 @@ def pytest_generate_tests(metafunc):
     # parse booleans
     values = {'TRUE': True, 'FALSE': False}
     dq_report_full = dq_report_full.replace(values)
+    dq_report_full['ts'] = dq_report_full['ts'].astype('datetime64[s]')
 
     # get last run
     last_pipeline_run_results: pd.DataFrame = dq_report_full.loc[dq_report_full['ts'] == dq_report_full['ts'].max()]
@@ -50,14 +51,14 @@ def pytest_generate_tests(metafunc):
             params_li_warnings.append(row)
 
     # parametrize for warnings test
-    if "dq_result_warning" in metafunc.fixturenames:
+    if "dq_result_warning" in metafunc.fixturenames and params_li_warnings:
         metafunc.parametrize("dq_result_warning",
                              params_li_warnings,
                              scope='session',
                              ids=[e[3] for e in params_li_warnings])
 
     # parametrize for errors test
-    if "dq_result_error" in metafunc.fixturenames:
+    if "dq_result_error" in metafunc.fixturenames and params_li_errors:
         metafunc.parametrize("dq_result_error",
                              params_li_errors,
                              scope='session',
